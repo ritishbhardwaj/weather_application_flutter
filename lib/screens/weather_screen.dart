@@ -20,9 +20,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // TextEditingController(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                onEditingComplete: (){
+                  print("hello ji");
+                },
                 controller: cityNameController,
               ),
             ),
