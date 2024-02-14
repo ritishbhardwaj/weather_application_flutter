@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:weather_application/constants.dart';
+import 'package:weather_application/screens/weather_screen.dart';
 
 class SplashScreen extends StatefulWidget {
    SplashScreen({super.key});
@@ -99,7 +100,10 @@ Future<void> getWeaher({required double lat , required double long}) async{
   final decodedResponse = json.decode(response.body);
   log(decodedResponse.toString());
   final weather = decodedResponse['weather'][0]['main'];
+  final temp = decodedResponse['main']['temp'];
   log(weather.toString());
+  final cal = (temp - 273); 
+  Navigator.of(context).push(MaterialPageRoute(builder: (_) => WeatherScreen(weather: weather, temperature: cal.toStringAsFixed(2))));
 }
   // log(response.body.toString());  
 
